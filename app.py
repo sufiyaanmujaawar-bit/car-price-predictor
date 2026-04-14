@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import os
 import pickle
 import time
 import pandas as pd
@@ -29,8 +30,8 @@ def login():
 # ------------------ MAIN APP ------------------
 def main_app():
     # Load model
-    model = pickle.load(open('model.pkl', 'rb'))
-    columns = pickle.load(open('columns.pkl', 'rb'))
+    model = pickle.load(open(os.path.join(os.getcwd(), "model.pkl"), "rb"))
+    columns = pickle.load(open(os.path.join(os.getcwd(), "columns.pkl"), "rb"))
 
     # Sidebar
     st.sidebar.title("🚗 Navigation")
