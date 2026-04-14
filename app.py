@@ -14,18 +14,30 @@ if "logged_in" not in st.session_state:
 
 # ------------------ LOGIN PAGE ------------------
 def login():
-    st.title("🔐 Login")
+    # --- HEADER ---
+    st.markdown("""
+    <h1 style='text-align:center; color:#00BFFF;'>🚗 Used Car Price Prediction</h1>
+    <h4 style='text-align:center;'>Smart ML-based car resale value estimator</h4>
+    """, unsafe_allow_html=True)
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    st.markdown("---")
 
-    if st.button("Login"):
-        if username == "admin" and password == "1234":
-            st.session_state.logged_in = True
-            st.success("Login successful!")
-            st.rerun()
-        else:
-            st.error("Invalid credentials")
+    # --- CENTER LOGIN BOX ---
+    col1, col2, col3 = st.columns([1, 2, 1])
+
+    with col2:
+        st.subheader("🔐 Login")
+
+        username = st.text_input("Username", key="login_user")
+        password = st.text_input("Password", type="password", key="login_pass")
+
+        if st.button("Login", use_container_width=True):
+            if username == "admin" and password == "1234":
+                st.session_state.logged_in = True
+                st.success("Login successful!")
+                st.rerun()
+            else:
+                st.error("Invalid credentials")
 
 # ------------------ MAIN APP ------------------
 def main_app():
